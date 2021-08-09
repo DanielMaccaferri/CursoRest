@@ -14,6 +14,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
 import java.util.Arrays;
 
@@ -136,7 +137,7 @@ public class UserJsonTest {
 		.body("findAll{it.age <= 25 && it.age > 20}.name", hasItem("Maria Joaquina"))//lista
 		.body("findAll{it.age <= 25}[0].name", is("Maria Joaquina"))//transforma a lista em objeto //[0] é o primeiro elemento da lista
 		.body("findAll{it.age <= 25}[1].name", is("Ana Júlia"))//transforma a lista em objeto //[0] é o primeiro elemento da lista
-		.body("findAll{it.age <= 25}[-1].name", is("Ana Júlia"))//transforma a lista em objeto //[0] é o primeiro elemento da lista
+		.body("findAll{it.age <= 25}[-1].name", is("Ana Júlia"))//transforma a lista em objeto //[-1] é o último elemento da lista
 		.body("find{it.age <= 25}.name", is("Maria Joaquina"))//find pega o primeiro elemento
 		.body("findAll{it.name.contains('n')}.name", hasItems("Maria Joaquina", "Ana Júlia"))
 		//.body("findAll{it.name.lenght() > 10}.name", hasItems("João da Silva", "Maria Joaquina"))
